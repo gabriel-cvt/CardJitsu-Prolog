@@ -43,8 +43,10 @@ verifica_vencedor(UltimaRodada) :-
 
 jogador_ganhou :-
     salvamentos:up_jogador_partida,
-
+    
     % função print jogador ganhou
+    format('Parabéns pela vitória ~s!', [Nome]),
+    format('Após derrotar ~s bravamente, você conquistou a faixa ~s!~n', [NomeBot], [get_faixa]),
 
     lib:pressionar_tecla,
     continuar_jogando.
@@ -52,6 +54,7 @@ jogador_ganhou :-
 jogador_perdeu :-
 
     % função print jogador perdeu
+    format('~s: Não foi dessa vez, melhore se quiser me desafiar novamente...~n', [NomeBot]),
 
     lib:pressionar_tecla,
     continuar_jogando.
@@ -59,6 +62,9 @@ jogador_perdeu :-
 continuar_jogando :-
 
     % Função print continuar jogando.
+    format('Deseja continuar jogando ou voltar ao Dojo?~n'),
+    format('1 - Continuar Jogando~n'),
+    format('2 - Voltar ao Dojo~n'),
 
     lib:input_to_number(Escolha),
     opcao_jogando(Escolha).

@@ -19,6 +19,7 @@ opcaoMenu(2) :-
 
 opcaoMenu(3) :-
     % Checar faixas
+    lib:verificar_faixa,
     menu.
 
 opcaoMenu(4) :-
