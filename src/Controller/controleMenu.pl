@@ -1,36 +1,36 @@
+:- module(controle_menu, [menu/0]).
+
 :- use_module('./src/Util/lib.pl').
 :- use_module('./src/Services/saidas.pl').
-:- user_module('./src/Controller/controleJogo.pl').
-:- user_module('./src/Controller/controleCarregamento.pl').
+:- use_module('./src/Controller/controleJogo.pl').
+:- use_module('./src/Controller/controleCarregamento.pl').
 
 menu :- 
-    clearScreen,
+    lib:clearScreen,
     saidas:printMenu,
-    lib:input_number("\nSua escolha é: ", Escolha),
+    lib:input_to_number(Escolha),
     opcaoMenu(Escolha).
 
 opcaoMenu(1) :-
-    controleCarregamento:novo_jogo,
-    menu.
+    controle_carregamento:novo_jogo.
 
 opcaoMenu(2) :-
-    controleCarregamento:carregar_jogo,
-    menu.
+    controle_carregamento:carregar_jogo.
 
 opcaoMenu(3) :-
     % Checar faixas
     menu.
 
 opcaoMenu(4) :-
-    ler_instrucoes,
-    pressionar_tecla,
+    saidas:ler_instrucoes,
+    lib:pressionar_tecla,
     menu.
 
 opcaoMenu(5) :-
-    write("Até a próxima, jovem ninja."),
+    write("Até a próxima, jovem ninja.\n"),
     halt(0).
 
 opcaoMenu(_) :-
-    write("Opção inválida, tente novamente."),
-    pressionar_tecla,
+    write("Opção inválida, tente novamente.\n"),
+    lib:pressionar_tecla,
     menu.

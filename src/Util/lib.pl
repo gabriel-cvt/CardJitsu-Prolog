@@ -1,3 +1,5 @@
+:- module(lib, [pressionar_tecla/0, get_user_input/1, clearScreen/0, input_to_number/1, barra_carregamento/0]).
+
 :- use_module(library(readutil)).
 :- use_module(library(time)).
 
@@ -13,35 +15,32 @@ get_user_input(Input) :-
 
 clearScreen :- tty_clear.
 
-pressionar_tecla :- 
-    input("\nAperte qualquer tecla para continuar... ", _),
-    clearScreen.
+input_to_number(N) :-
+    get_user_input(InputAux),
+    normalize_space(atom(Input), InputAux),
+    (atom_number(Input, N) -> true; N = -1).
 
-input_number(Text, N) :- 
-    input(Text, OutputAux),
-    normalize_space(atom(Output) , OutputAux),
-    (atom_number(Output, N) ->  true; N = -1).
-
-
+% Tá dando algum problema nesse predicado, ele está levando ao menu principal
 % Regra principal para iniciar a barra de carregamento
 barra_carregamento :-
+    nl,
     carregar(0).
 
 % Regra para atualizar a barra de carregamento
 carregar(Percent) :-
     Percent =< 100,
-    write('\r['),  % \r para retornar ao início da linha
+    write('\r['),
     imprimir_barra(Percent), 
     format('] ~d%', [Percent]),
-    flush_output,   % Garante que a barra seja impressa imediatamente
-    sleep(0.03),    % Atraso de 30ms para o efeito visual
-    NovoPercent is Percent + 1,  % Incrementa o percentual de 1 em 1
+    flush_output,
+    sleep(0.03),
+    NovoPercent is Percent + 1,
     carregar(NovoPercent).
 
 % Regra para imprimir a barra de acordo com a porcentagem
 imprimir_barra(Percent) :-
-    NumHash is Percent // 2,    % Cada # representa 2% agora
-    NumHifens is 50 - NumHash,  % Restante da barra com -
+    NumHash is Percent // 2,
+    NumHifens is 50 - NumHash,
     imprimir_simbolo(NumHash, '#'),
     imprimir_simbolo(NumHifens, '-').
 

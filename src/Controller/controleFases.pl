@@ -1,57 +1,59 @@
-:- user_module('./src/Util/lib.pl').
-:- user_module('./src/Util/controleJogo.pl').
-:- user_module('./src/Controller/controleCarregamento.pl').
+:- module(controle_fase, [fase_jogador/1, escolha_final/1]).
 
-carregar_fase_jogador(branca) :-
-    clearScreen,
+:- use_module('./src/Util/lib.pl').
+:- use_module('./src/Util/controleJogo.pl').
+:- use_module('./src/Controller/controleCarregamento.pl').
+
+fase_jogador(branca) :-
+    lib:clearScreen,
     % função de texto fase branca
-    pressionar_tecla,
+    lib:pressionar_tecla,
     controleJogo:controller_jogo("O Ruivo").
 
-carregar_fase_jogador(azul) :-
-    clearScreen,
+fase_jogador(azul) :-
+    lib:clearScreen,
     % função de texto fase azul
-    pressionar_tecla,
+    lib:pressionar_tecla,
     controleJogo:controller_jogo("Bruxa da Neve").
 
-carregar_fase_jogador(roxa) :-
-    clearScreen,
+fase_jogador(roxa) :-
+    lib:clearScreen,
     % função de texto fase roxa
-    pressionar_tecla,
+    lib:pressionar_tecla,
     controleJogo:controller_jogo("Caveleiro Do Mar").
 
-carregar_fase_jogador(marrom) :-
-    clearScreen,
+fase_jogador(marrom) :-
+    lib:clearScreen,
     % função de texto fase marrom
-    pressionar_tecla,
+    lib:pressionar_tecla,
     controleJogo:controller_jogo("Punhos de Fogo").
 
-carregar_fase_jogador(preta) :-
-    clearScreen,
+fase_jogador(preta) :-
+    lib:clearScreen,
     % função de texto fase preta
-    pressionar_tecla,
+    lib:pressionar_tecla,
     controleJogo:controller_jogo("Olhos de Falcão").
 
-carregar_fase_jogador(mestre) :-
-    clearScreen,
+fase_jogador(mestre) :-
+    lib:clearScreen,
     % função texto zerou o jogo
-    pressionar_tecla,
+    lib:pressionar_tecla,
     % função da interface de escolha pós-zerar jogo, retornar a variável que ele escolheu
     escolha_final(Escolha).
 
 
 escolha_final(1) :-
-    clearScreen,
+    lib:clearScreen,
     write("\nEntão você vai abandonar tudo que conseguiu e ir atrás da conquista novamente..."),
-    pressionar_tecla,
-    controleCarregamento:novo_jogo.
+    lib:pressionar_tecla,
+    controle_carregamento:novo_jogo.
 
 escolha_final(2) :-
     write("\nBem, o caminho que você fez não foi fácil.\nApós tantas batalhas, chegou o momento de descansar"),
-    pressionar_tecla,
+    lib:pressionar_tecla,
     halt(0).
 
 escolha_final(_) :-
     write("\nPelo visto a jornada foi tão desafiadora que confundiu suas teclas...\nEscolha novamente!"),
-    pressionar_tecla
-    carregar_fase_jogador(mestre).
+    lib:pressionar_tecla
+    controle_carregamento:fase_jogador(mestre).
