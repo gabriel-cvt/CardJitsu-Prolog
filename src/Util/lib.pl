@@ -10,7 +10,7 @@ pressionar_tecla :-
     true.
 
 get_user_input(Input) :-
-    ansi_format([fg(yellow)], '~w', ["\nDigite sua escolha: "]).
+    ansi_format([fg(yellow)], '~w', ["\nDigite sua escolha: "]),
     read_line_to_string(user_input, Input).
 
 clearScreen :- tty_clear.
