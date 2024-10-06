@@ -13,11 +13,11 @@ printMenu :-
     ansi_format([bold,fg(blue)], '~w', ["      /____/\\__/_/_/_/  |___/_/_//_/\\_,_/\\___/  \\_,_/\\___/  \\_,_/\\___/_/ /\\___/ (_)   \n"]),
     ansi_format([bold,fg(blue)], '~w', ["                                                                    |___/                 \n"]),
     ansi_format([bold,fg(yellow)], '~w', [\n"      Qual vai ser a sua escolha para hoje?\n"]),
-    ansi_format([fg(yellow)], '~w', ["\n1 ‣ Começar novo jogo"]),
-    ansi_format([fg(yellow)], '~w', ["    2 ‣ Carregar jogo"]),
-    ansi_format([fg(yellow)], '~w', ["    3 ‣ Checar faixas"]),
-    ansi_format([fg(yellow)], '~w', ["    4 ‣ Instruções"]),
-    ansi_format([fg(yellow)], '~w', ["    5 ‣ Sair do jogo\n"]).
+    ansi_format([fg(yellow)], '~w', ["\n1 ‣ Começar novo jogo    2 ‣ Carregar jogo    3 ‣ Checar faixas    4 ‣ Instruções    5 ‣ Sair do jogo\n"]).
+    %ansi_format([fg(yellow)], '~w', ["    2 ‣ Carregar jogo"]),
+    %ansi_format([fg(yellow)], '~w', ["    3 ‣ Checar faixas"]),
+    %ansi_format([fg(yellow)], '~w', ["    4 ‣ Instruções"]),
+    %ansi_format([fg(yellow)], '~w', ["    5 ‣ Sair do jogo\n"]).
 
 printNovoJogo :-
     write("Começando uma nova aventura ninja...\n"),
