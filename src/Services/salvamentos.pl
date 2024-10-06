@@ -41,5 +41,6 @@ read_lines(Stream, [Linha|Linhas]) :-
 
 up_jogador_partida :-
     carregar_jogador(Jogador),
-    faixa:up_faixa(Jogador, JogadorAtualizado),
+    faixa:up_faixa(Jogador, JogadorProxFaixa),
+    player:up_progresso(JogadorProxFaixa, JogadorAtualizado)
     salvamentos:salvar_jogador(JogadorAtualizado).

@@ -13,4 +13,4 @@ get_progresso(player(_, _, Progresso), Progresso).
 up_progresso(player(Nome, Faixa, Progresso), player(Nome, Faixa, NovoProgreso)) :-
     NovoProgreso is Progresso + 1.
 
-novo_jogador(Nome, player(Nome, branca, 0)).
+novo_jogador(Nome, player(Nome, branca, 1)).

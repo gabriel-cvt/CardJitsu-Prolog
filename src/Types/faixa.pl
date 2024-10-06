@@ -1,6 +1,6 @@
- module([get_faixa/2, up_faixa/2]).
+:- module([get_faixa/2, up_faixa/2]).
 
-:- user_module('src/Types/player.pl')
+:- use_module('src/Types/player.pl').
 
 faixa(branca).
 faixa(azul).

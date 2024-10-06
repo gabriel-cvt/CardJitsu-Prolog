@@ -17,7 +17,7 @@ novo_jogo :-
 % Inicializar jogador
 inicializa_jogador(Nome) :-
     player:novo_jogador(Nome, Player),
-    salvamentos:salvar_jogador(PlayerCriado).
+    salvamentos:salvar_jogador(Player).
 
 % Carregar jogo salvo
 carregar_jogo :- 
@@ -25,7 +25,7 @@ carregar_jogo :-
     write("Verificando progresso...\n"),
     % lib:barra_carregamento,
     salvamentos:carregar_jogador(Player),
-    (salvamentos:existe_progresso(Player) 
+    (salvamentos:existe_progresso(Player)
     ->  carregar_fase
     ;   write("Você não tem nenhum progresso salvo.\nVamos começar um novo agora!\n"),
         lib:pressionar_tecla,

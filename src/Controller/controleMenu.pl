@@ -18,7 +18,6 @@ opcaoMenu(2) :-
     controle_carregamento:carregar_jogo.
 
 opcaoMenu(3) :-
-    % Checar faixas
     lib:verificar_faixa,
     menu.
 

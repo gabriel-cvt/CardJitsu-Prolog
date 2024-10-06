@@ -8,13 +8,13 @@ fase_jogador(branca) :-
     lib:clearScreen,
     % função de texto fase branca
     lib:pressionar_tecla,
-    controleJogo:controller_jogo("O Ruivo").
+    controle_Jogo:controller_jogo("O Ruivo").
 
 fase_jogador(azul) :-
     lib:clearScreen,
     % função de texto fase azul
     lib:pressionar_tecla,
-    controleJogo:controller_jogo("Bruxa da Neve").
+    controle_Jogo:controller_jogo("Bruxa da Neve").
 
 fase_jogador(roxa) :-
     lib:clearScreen,
