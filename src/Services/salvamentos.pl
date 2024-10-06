@@ -39,7 +39,7 @@ read_lines(Stream, [Linha|Linhas]) :-
     Linha = LinhaString,
     read_lines(Stream, Linhas).
 
-up_jogador_partida :-
+up_jogador_partida(JogadorAtualizado) :-
     carregar_jogador(Jogador),
     faixa:up_faixa(Jogador, JogadorProxFaixa),
     player:up_progresso(JogadorProxFaixa, JogadorAtualizado)

@@ -1,10 +1,10 @@
-:- module(controle_carregamento, [novo_jogo/0, inicializa_jogador/1, carregar_jogo/0, carregar_fase/0]).
+:- module(controle_carregamento, [novo_jogo/0, carregar_jogo/0]).
 
-:- use_module('./src/Services/salvamentos.pl').  % Carrega o módulo salvamentos
-:- use_module('./src/Services/saidas.pl').       % Carrega o módulo saidas
-:- use_module('./src/Types/player.pl').          % Carrega o módulo player
-:- use_module('./src/Controller/controleFases.pl'). % Carrega o módulo controleFases
-:- use_module('./src/Util/lib.pl').              % Carrega o módulo lib
+:- use_module('./src/Services/salvamentos.pl').
+:- use_module('./src/Services/saidas.pl').
+:- use_module('./src/Types/player.pl').
+:- use_module('./src/Controller/controleFases.pl').
+:- use_module('./src/Util/lib.pl').
 
 % Iniciar novo jogo
 novo_jogo :- 
