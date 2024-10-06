@@ -8,31 +8,31 @@ fase_jogador(branca) :-
     lib:clearScreen,
     % função de texto fase branca
     lib:pressionar_tecla,
-    controle_Jogo:controller_jogo("O Ruivo").
+    controle_jogo:controller_jogo("O Ruivo").
 
 fase_jogador(azul) :-
     lib:clearScreen,
     % função de texto fase azul
     lib:pressionar_tecla,
-    controle_Jogo:controller_jogo("Bruxa da Neve").
+    controle_jogo:controller_jogo("Bruxa da Neve").
 
 fase_jogador(roxa) :-
     lib:clearScreen,
     % função de texto fase roxa
     lib:pressionar_tecla,
-    controleJogo:controller_jogo("Caveleiro Do Mar").
+    controle_jogo:controller_jogo("Caveleiro Do Mar").
 
 fase_jogador(marrom) :-
     lib:clearScreen,
     % função de texto fase marrom
     lib:pressionar_tecla,
-    controleJogo:controller_jogo("Punhos de Fogo").
+    controle_jogo:controller_jogo("Punhos de Fogo").
 
 fase_jogador(preta) :-
     lib:clearScreen,
     % função de texto fase preta
     lib:pressionar_tecla,
-    controleJogo:controller_jogo("Olhos de Falcão").
+    controle_jogo:controller_jogo("Olhos de Falcão").
 
 fase_jogador(mestre) :-
     lib:clearScreen,
