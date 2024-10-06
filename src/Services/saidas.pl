@@ -6,18 +6,14 @@
 
 
 printMenu :-
-    ansi_format([bold,fg(blue)], '~w', ["
-   ___                   _         __                      __       _        __ \n"]),
-    ansi_format([bold,fg(blue)], '~w', ["  / _ )___ __ _    _  __(_)__  ___/ /__    ___ ____    ___/ /__    (_)__    / / \n"]),
-    ansi_format([bold,fg(blue)], '~w', [" / _  / -_)  ' \\  | |/ / / _  / _  / _ \\  / _ `/ _ \\  / _  / _ \\  / / _ \\  /_/  \n"]),
-    ansi_format([bold,fg(blue)], '~w', ["/____/\\__/_/_/_/  |___/_/_//_/\\_,_/\\___/  \\_,_/\\___/  \\_,_/\\___/_/ /\\___/ (_)   \n"]),
-    ansi_format([bold,fg(blue)], '~w', ["                                                              |___/                 \n"]),
-    ansi_format([bold,fg(yellow)], '~w', ["\nQual vai ser a sua escolha para hoje?\n"]),
-    ansi_format([fg(yellow)], '~w', ["1 - Começar novo jogo    2 - Carregar jogo    3 - Checar faixas    4 - Instruções    5 - Sair do jogo\n"]).
-    %ansi_format([fg(yellow)], '~w', ["2 - Carregar jogo\n"]),
-    %ansi_format([fg(yellow)], '~w', ["3 - Checar faixas\n"]),
-    %ansi_format([fg(yellow)], '~w', ["4 - Instruções\n"]),
-    %ansi_format([fg(yellow)], '~w', ["5 - Sair do jogo\n"]).
+    ansi_format([bold,fg(yellow)], '~w', ["
+          ___                   _         __                      __       _        __ \n"]),
+    ansi_format([bold,fg(yellow)], '~w', ["         / _ )___ __ _    _  __(_)__  ___/ /__    ___ ____    ___/ /__    (_)__    / / \n"]),
+    ansi_format([bold,fg(yellow)], '~w', ["        / _  / -_)  ' \\  | |/ / / _  / _  / _ \\  / _ `/ _ \\  / _  / _ \\  / / _ \\  /_/  \n"]),
+    ansi_format([bold,fg(yellow)], '~w', ["       /____/\\__/_/_/_/  |___/_/_//_/\\_,_/\\___/  \\_,_/\\___/  \\_,_/\\___/_/ /\\___/ (_)   \n"]),
+    ansi_format([bold,fg(yellow)], '~w', ["                                                                     |___/                 \n"]),
+    ansi_format([bold,fg(blue)], '~w', ["               \nQual vai ser a sua escolha para hoje?\n"]),
+    ansi_format([fg(blue)], '~w', ["\n(1) Começar novo jogo    (2) Carregar jogo    (3) Checar faixas    (4)Instruções    (5) Sair do jogo\n"]).
 
 printNovoJogo :-
     write("Começando uma nova aventura ninja...\n"),
