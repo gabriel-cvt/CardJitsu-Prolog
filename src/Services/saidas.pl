@@ -5,13 +5,13 @@
 
 
 printMenu :-
-    write("
+    write(ansi_format([fg(blue)], '~w', ["
    ___                   _         __                      __       _        __
   / _ )___ __ _    _  __(_)__  ___/ /__    ___ ____    ___/ /__    (_)__    / /
  / _  / -_)  ' \  | |/ / / _ \/ _  / _ \  / _ `/ _ \  / _  / _ \  / / _ \  /_/ 
 /____/\__/_/_/_/  |___/_/_//_/\_,_/\___/  \_,_/\___/  \_,_/\___/_/ /\___/ (_)  
                                                               |___/            
-\n")
+\n"]).),
     %write("======= Bem vindo ao Dojo! =======\n"),
     write("Qual vai ser a sua escolha para hoje?\n"),
     write("1 - Começar novo jogo\n"),
