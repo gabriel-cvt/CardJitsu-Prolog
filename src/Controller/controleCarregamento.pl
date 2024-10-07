@@ -23,7 +23,7 @@ inicializa_jogador(Nome) :-
 carregar_jogo :- 
     lib:clearScreen,
     write("Verificando progresso...\n"),
-    % lib:barra_carregamento,
+    lib:loading,
     salvamentos:carregar_jogador(Player),
     (salvamentos:existe_progresso(Player)
     ->  carregar_fase
@@ -35,7 +35,7 @@ carregar_jogo :-
 carregar_fase :-
     lib:clearScreen,
     write("Carregando fase..."),
-    % lib:barra_carregamento,
+    lib:loading,
     lib:clearScreen,
     salvamentos:carregar_jogador(Player),
     player:get_faixa(Player, Faixa),

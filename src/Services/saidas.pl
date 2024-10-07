@@ -6,18 +6,18 @@
 
 
 printMenu :-
-    ansi_format([bold,fg(yellow)], '~w', ["
-          ___                   _         __                      __       _        __ \n"]),
-    ansi_format([bold,fg(yellow)], '~w', ["         / _ )___ __ _    _  __(_)__  ___/ /__    ___ ____    ___/ /__    (_)__    / / \n"]),
-    ansi_format([bold,fg(yellow)], '~w', ["        / _  / -_)  ' \\  | |/ / / _  / _  / _ \\  / _ `/ _ \\  / _  / _ \\  / / _ \\  /_/  \n"]),
-    ansi_format([bold,fg(yellow)], '~w', ["       /____/\\__/_/_/_/  |___/_/_//_/\\_,_/\\___/  \\_,_/\\___/  \\_,_/\\___/_/ /\\___/ (_)   \n"]),
-    ansi_format([bold,fg(yellow)], '~w', ["                                                                     |___/                 \n"]),
-    ansi_format([bold,fg(blue)], '~w', ["               \nQual vai ser a sua escolha para hoje?\n"]),
-    ansi_format([fg(blue)], '~w', ["\n(1) Começar novo jogo    (2) Carregar jogo    (3) Checar faixas    (4)Instruções    (5) Sair do jogo\n"]).
+    centraliza_format([bold, fg(yellow)], "          ___                   _         __                      __       _        __ \n"),
+    centraliza_format([bold, fg(yellow)], "         / _ )___ __ _    _  __(_)__  ___/ /__    ___ ____    ___/ /__    (_)__    / / \n"),
+    centraliza_format([bold, fg(yellow)], "        / _  / -_)  ' \\  | |/ / / _  / _  / _ \\  / _ `/ _ \\  / _  / _ \\  / / _ \\  /_/  \n"),
+    centraliza_format([bold, fg(yellow)], "       /____/\\__/_/_/_/  |___/_/_//_/\\_,_/\\___/  \\_,_/\\___/  \\_,_/\\___/_/ /\\___/ (_)   \n"),
+    centraliza_format([bold, fg(yellow)], "                                                                     |___/                 \n"),
+    centraliza_format([bold, fg(blue)], "Qual vai ser a sua escolha para hoje?\n"),
+    write("\n"),
+    centraliza_format([fg(blue)], "(1) Começar novo jogo    (2) Carregar jogo    (3) Checar faixas    (4) Instruções    (5) Sair do jogo\n").
 
 printNovoJogo :-
-    write("Começando uma nova aventura ninja...\n"),
-    write("Qual é o seu nome?\n").
+    centraliza("Começando uma nova aventura ninja...\n"),
+    centraliza("Qual é o seu nome?").
 
 ler_instrucoes :-
     salvamentos:carregar_instrucoes(Instrucoes),
@@ -26,5 +26,27 @@ ler_instrucoes :-
 
 imprimir_instrucoes([]).
 imprimir_instrucoes([Linha|Linhas]) :-
-    write(Linha), nl,  % Imprime a linha e nova linha
+    write(Linha), nl,
     imprimir_instrucoes(Linhas).
+
+
+tamanho_terminal(Colunas) :-
+    process_create(path(stty), ['size'], [stdout(pipe(Out))]),
+    read_line_to_string(Out, Result),
+    split_string(Result, " ", "", [_LinhasStr, ColunasStr]),
+    number_string(Colunas, ColunasStr).
+
+% Centraliza uma linha de texto
+centraliza(Text) :-
+    tamanho_terminal(Colunas),
+    string_length(Text, TextLength),
+    Espacos is (Colunas - TextLength) // 2,
+    tab(Espacos),
+    writeln(Text).
+
+centraliza_format(Estilo, Texto) :-
+    tamanho_terminal(Colunas),
+    string_length(Texto, TextLength),
+    Espacos is (Colunas - TextLength) // 2,
+    tab(Espacos),
+    ansi_format(Estilo, Texto, []).

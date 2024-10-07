@@ -17,7 +17,7 @@ rodada(1) :-
     jogo:iniciar_jogo([0, 0], Vencedor),
     nome_bot(NomeBot),
 
-    % loading bar
+    lib:loading,
     (Vencedor
     ->  format('~s: Você ganhou a primeira, mas a próxima irei te destruir.~n', [NomeBot]),
         rodada(2, ganhou)
@@ -37,7 +37,7 @@ rodada(3) :-
     nome_bot(NomeBot),
     format('Pelo visto a batalha está  difícil com ~s, será necessário um desempate!~n', [NomeBot]),
 
-    % loading bar,
+    lib:loading,
 
     jogo:iniciar_jogo([1, 1], Vencedor),
     (Vencedor -> resultado(vitoria) ; resultado(derrota)).

@@ -1,8 +1,8 @@
-:- module(lib, [pressionar_tecla/0, get_user_input/1, clearScreen/0, input_to_number/1, barra_carregamento/0]).
+:- module(lib, [pressionar_tecla/0, get_user_input/1, clearScreen/0, input_to_number/1, loading/0]).
 
 :- use_module(library(readutil)).
 :- use_module(library(time)).
-
+:- use_module(library(sleep)).
 
 pressionar_tecla :-
     write('Pressione a tecla ENTER para continuar...'), nl,
@@ -20,37 +20,40 @@ input_to_number(N) :-
     normalize_space(atom(Input), InputAux),
     (atom_number(Input, N) -> true; N = -1).
 
-% Tá dando algum problema nesse predicado, ele está levando ao menu principal
-% Regra principal para iniciar a barra de carregamento
-barra_carregamento :-
-    nl,
-    carregar(0).
-
-% Regra para atualizar a barra de carregamento
-carregar(Percent) :-
-    Percent =< 100,
-    write('\r['),
-    imprimir_barra(Percent), 
-    format('] ~d%', [Percent]),
+% Função para exibir a barra de carregamento
+loading_bar(Progress) :-
+    % Define o tamanho da barra
+    BarSize = 50,
+    % Calcula o número de hashes e traços
+    Hashes is (Progress * BarSize) // 100,
+    Dashes is BarSize - Hashes,
+    
+    % Gera a parte da barra com hashes
+    length(HashList, Hashes),
+    maplist(=('#'), HashList),
+    atomic_list_concat(HashList, '', HashPart),
+    
+    % Gera a parte da barra com traços
+    length(DashList, Dashes),
+    maplist(=('-'), DashList),
+    atomic_list_concat(DashList, '', DashPart),
+    
+    % Concatena a barra
+    atomic_list_concat(['[', HashPart, DashPart, ']'], Bar),
+    
+    % Limpa a linha anterior e exibe a nova barra com o progresso percentual
+    format('\r~s ~d%', [Bar, Progress]),
+    
+    % Garante que a saída seja atualizada imediatamente
     flush_output,
-    sleep(0.03),
-    NovoPercent is Percent + 1,
-    carregar(NovoPercent).
+    
+    % Pausa para simular o progresso
+    sleep(0.025).  % Ajuste o tempo conforme necessário
 
-% Regra para imprimir a barra de acordo com a porcentagem
-imprimir_barra(Percent) :-
-    NumHash is Percent // 2,
-    NumHifens is 50 - NumHash,
-    imprimir_simbolo(NumHash, '#'),
-    imprimir_simbolo(NumHifens, '-').
-
-% Regra auxiliar para imprimir símbolos repetidamente
-imprimir_simbolo(0, _) :- !.
-imprimir_simbolo(N, Simbolo) :-
-    N > 0,
-    write(Simbolo),
-    N1 is N - 1,
-    imprimir_simbolo(N1, Simbolo).
+% Loop de carregamento de 0 a 100
+loading :-
+    nl,  % Adiciona uma nova linha após o carregamento completo
+    forall(between(0, 100, Progress), loading_bar(Progress)), nl.
 
 verificar_faixa:-
     salvamentos:carregar_jogador(Jogador),
