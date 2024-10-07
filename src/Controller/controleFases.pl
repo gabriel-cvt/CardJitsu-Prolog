@@ -7,39 +7,39 @@
 
 fase_jogador(branca) :-
     lib:clearScreen,
-    % função de texto fase branca
+    saidas:texto(branca),
     lib:pressionar_tecla,
     controle_jogo:start_partida("O Ruivo").
 
 fase_jogador(azul) :-
     lib:clearScreen,
-    % função de texto fase azul
+    saidas:texto(azul),
     lib:pressionar_tecla,
     controle_jogo:start_partida("Bruxa da Neve").
 
 fase_jogador(roxa) :-
     lib:clearScreen,
-    % função de texto fase roxa
+    saidas:texto(roxa),
     lib:pressionar_tecla,
     controle_jogo:start_partida("Caveleiro Do Mar").
 
 fase_jogador(marrom) :-
     lib:clearScreen,
-    % função de texto fase marrom
+    saidas:texto(marrom),
     lib:pressionar_tecla,
     controle_jogo:start_partida("Punhos de Fogo").
 
 fase_jogador(preta) :-
     lib:clearScreen,
-    % função de texto fase preta
+    saidas:texto(preta),
     lib:pressionar_tecla,
     controle_jogo:start_partida("Olhos de Falcão").
 
 fase_jogador(mestre) :-
     lib:clearScreen,
-    % função texto zerou o jogo
+    saidas:texto(final),
     lib:pressionar_tecla,
-    % função da interface de escolha pós-zerar jogo, retornar a variável que ele escolheu
+    saidas:texto(zerou),
     escolha_final(Escolha).
 
 

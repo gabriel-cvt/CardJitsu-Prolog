@@ -41,7 +41,7 @@ exibir_faixa(preta, FaixasAnteriores, _) :-
     write("Parabéns! Você conquistou a faixa preta!\n"),
     write("Faixas anteriores:\n"),
     maplist(exibir_faixa_anterior, FaixasAnteriores),
-    write("Objetivo restante:\n ➤ Desafiar o sensei e virar um Mestre ninja\n").
+    write("Objetivo restante:\n ➤ Desafiar o sensei e virar um Mestre ninja\n\n").
 
 exibir_faixa(mestre, FaixasAnteriores, _) :-
     write("Parabéns! Você é um grande mestre Ninja!\n"),

@@ -22,8 +22,6 @@ inicializa_jogador(Nome) :-
 % Carregar jogo salvo
 carregar_jogo :- 
     lib:clearScreen,
-    saidas:centraliza("Carregando progresso ninja..."),
-    lib:loading,
     salvamentos:carregar_jogador(Player),
     (salvamentos:existe_progresso(Player)
     ->  carregar_fase
