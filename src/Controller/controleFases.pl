@@ -3,6 +3,7 @@
 :- use_module('./src/Util/lib.pl').
 :- use_module('./src/Controller/controleJogo.pl').
 :- use_module('./src/Controller/controleCarregamento.pl').
+:- use_module('./src/Services/saidas.pl').
 
 fase_jogador(branca) :-
     lib:clearScreen,
@@ -44,16 +45,16 @@ fase_jogador(mestre) :-
 
 escolha_final(1) :-
     lib:clearScreen,
-    write("\nEntão você vai abandonar tudo que conseguiu e ir atrás da conquista novamente..."),
+    saidas:centraliza("Então você vai abandonar tudo que conseguiu e ir atrás da conquista novamente...\n"),
     lib:pressionar_tecla,
     controle_carregamento:novo_jogo.
 
 escolha_final(2) :-
-    write("\nBem, o caminho que você fez não foi fácil.\nApós tantas batalhas, chegou o momento de descansar"),
+    saidas:centraliza("Bem, o caminho que você fez não foi fácil.\nApós tantas batalhas, chegou o momento de descansar\n"),
     lib:pressionar_tecla,
     halt(0).
 
 escolha_final(_) :-
-    write("\nPelo visto a jornada foi tão desafiadora que confundiu suas teclas...\nEscolha novamente!"),
+    saidas:centraliza("Pelo visto a jornada foi tão desafiadora que confundiu suas teclas...\nEscolha novamente!\n"),
     lib:pressionar_tecla
     controle_carregamento:fase_jogador(mestre).

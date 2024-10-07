@@ -1,4 +1,4 @@
-:- module(saidas, [printMenu/0, printNovoJogo/0, ler_instrucoes/0]).
+:- module(saidas, [printMenu/0, printNovoJogo/0, ler_instrucoes/0, centraliza/1]).
 
 :- use_module('./src/Services/salvamentos.pl').
 :- use_module('./src/Util/lib.pl').
@@ -10,7 +10,7 @@ printMenu :-
     centraliza_format([bold, fg(yellow)], "         / _ )___ __ _    _  __(_)__  ___/ /__    ___ ____    ___/ /__    (_)__    / / \n"),
     centraliza_format([bold, fg(yellow)], "        / _  / -_)  ' \\  | |/ / / _  / _  / _ \\  / _ `/ _ \\  / _  / _ \\  / / _ \\  /_/  \n"),
     centraliza_format([bold, fg(yellow)], "       /____/\\__/_/_/_/  |___/_/_//_/\\_,_/\\___/  \\_,_/\\___/  \\_,_/\\___/_/ /\\___/ (_)   \n"),
-    centraliza_format([bold, fg(yellow)], "                                                                     |___/                 \n"),
+    centraliza_format([bold, fg(yellow)], "                                                                         |___/                 \n"),
     centraliza_format([bold, fg(blue)], "Qual vai ser a sua escolha para hoje?\n"),
     write("\n"),
     centraliza_format([fg(blue)], "(1) Começar novo jogo    (2) Carregar jogo    (3) Checar faixas    (4) Instruções    (5) Sair do jogo\n").
@@ -24,9 +24,9 @@ ler_instrucoes :-
     imprimir_instrucoes(Instrucoes).
 
 
-imprimir_instrucoes([]).
+imprimir_instrucoes([]) :- nl.
 imprimir_instrucoes([Linha|Linhas]) :-
-    write(Linha), nl,
+    centraliza(Linha),
     imprimir_instrucoes(Linhas).
 
 

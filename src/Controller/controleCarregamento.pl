@@ -22,19 +22,19 @@ inicializa_jogador(Nome) :-
 % Carregar jogo salvo
 carregar_jogo :- 
     lib:clearScreen,
-    write("Verificando progresso...\n"),
+    saidas:centraliza("Carregando progresso ninja..."),
     lib:loading,
     salvamentos:carregar_jogador(Player),
     (salvamentos:existe_progresso(Player)
     ->  carregar_fase
-    ;   write("Você não tem nenhum progresso salvo.\nVamos começar um novo agora!\n"),
+    ;   saidas:centraliza("Você não tem nenhum progresso salvo. Vamos começar um novo agora!\n"),
         lib:pressionar_tecla,
         novo_jogo).
 
 % Carregar a fase do jogador
 carregar_fase :-
     lib:clearScreen,
-    write("Carregando fase..."),
+    saidas:centraliza("Chegando para o duelo no Dojo..."),
     lib:loading,
     lib:clearScreen,
     salvamentos:carregar_jogador(Player),

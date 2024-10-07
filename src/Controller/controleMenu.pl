@@ -4,6 +4,8 @@
 :- use_module('./src/Services/saidas.pl').
 :- use_module('./src/Controller/controleJogo.pl').
 :- use_module('./src/Controller/controleCarregamento.pl').
+:- use_module('./src/Types/faixa.pl').
+:- use_module(library(sleep)).
 
 menu :- 
     lib:clearScreen,
@@ -18,7 +20,8 @@ opcaoMenu(2) :-
     controle_carregamento:carregar_jogo.
 
 opcaoMenu(3) :-
-    lib:verificar_faixa,
+    faixa:verificar_faixa,
+    lib:pressionar_tecla,
     menu.
 
 opcaoMenu(4) :-
@@ -27,10 +30,12 @@ opcaoMenu(4) :-
     menu.
 
 opcaoMenu(5) :-
-    write("Até a próxima, jovem ninja.\n"),
+    saidas:centraliza("Até a próxima, jovem ninja.\n"),
+    saidas:centraliza("Fechando o Dojo..."),
+    sleep(1.5),
     halt(0).
 
 opcaoMenu(_) :-
-    write("Opção inválida, tente novamente.\n"),
+    saidas:centraliza("Opção inválida, tente novamente.\n"),
     lib:pressionar_tecla,
     menu.
