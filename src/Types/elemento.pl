@@ -1,3 +1,7 @@
+:- module(elemento, [elemento/1,
+                     prioridade_elemento/2,
+                     mostrar_elemento/2]).
+
 elemento(fogo).
 elemento(agua).
 elemento(neve).
