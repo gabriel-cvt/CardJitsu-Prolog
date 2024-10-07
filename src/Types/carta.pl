@@ -1,4 +1,9 @@
-:- consult('elemento.pl').
+:- module(carta, [poder/1, 
+                  mostrar_poder/2, 
+                  carta/3, 
+                  mostrar_carta/4]).
+                
+:- use_module('./src/Types/elemento.pl').
 
 poder(null).
 poder(mais_dois).
