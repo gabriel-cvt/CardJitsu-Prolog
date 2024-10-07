@@ -11,10 +11,10 @@
 
 start_partida(NomeBot) :-
     assertz(nome_bot(NomeBot)),
-    rodada(1, Vencedor).
+    rodada(1).
 
-rodada(1, Vencedor) :- 
-    iniciar_jogo([0, 0], Vencedor),
+rodada(1) :- 
+    jogo:iniciar_jogo([0, 0], Vencedor),
     nome_bot(NomeBot),
 
     % loading bar
@@ -25,12 +25,12 @@ rodada(1, Vencedor) :-
         rodada(2, perdeu)).
 
 rodada(2, ganhou) :-
-    iniciar_jogo([1, 0], SegundaRodada),
+    jogo:iniciar_jogo([1, 0], SegundaRodada),
 
     (SegundaRodada -> resultado(vitoria) ; rodada(3)).
 
 rodada(2, perdeu) :-
-    iniciar_jogo([0, 1], SegundaRodada),
+    jogo:iniciar_jogo([0, 1], SegundaRodada),
     (SegundaRodada -> rodada(3) ; resultado(derrota)).
 
 rodada(3) :-
@@ -39,7 +39,7 @@ rodada(3) :-
 
     % loading bar,
 
-    iniciar_jogo([1, 1], Vencedor),
+    jogo:iniciar_jogo([1, 1], Vencedor),
     (Vencedor -> resultado(vitoria) ; resultado(derrota)).
 
 % Jogador Ganhou
